@@ -109,8 +109,31 @@
     }
     .nav-cta:hover { background: var(--maroon-dark) !important; }
 
-    .mobile-menu { display: none; background: none; border: none; cursor: pointer; }
+    .mobile-menu { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
     .mobile-menu svg { width: 28px; height: 28px; color: var(--navy); }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 0.5rem 0;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav .nav-cta {
+      margin: 0.75rem 1.5rem;
+      text-align: center;
+      border-radius: 8px;
+      border-bottom: none;
+    }
 
     /* ── Hero ── */
     .hero {
@@ -616,7 +639,7 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-stats { grid-template-columns: repeat(4, 1fr); }
       .events-grid { grid-template-columns: repeat(2, 1fr); }
       .events-grid .event-card:last-child { display: none; }
@@ -625,20 +648,93 @@
       .chapters-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
     @media (max-width: 768px) {
       .top-bar { display: none; }
-      nav a:not(.nav-cta) { display: none; }
+      nav { display: none; }
       .mobile-menu { display: block; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero-inner { padding: 3rem 1.5rem; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+
+      section { padding: 3rem 1.25rem; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .section-title { font-size: 1.7rem; }
+      .section-desc { font-size: 0.95rem; margin-bottom: 2rem; }
+
+      .header-inner { padding: 0.6rem 1.25rem; }
+      .logo-text { font-size: 1.6rem; }
+
+      /* Hero mobile */
+      .hero h1 { font-size: 2rem; }
+      .hero-inner { padding: 2.5rem 1.25rem 2rem; gap: 2rem; }
+      .hero p { font-size: 1rem; margin-bottom: 1.5rem; }
+      .hero-badge { font-size: 0.7rem; padding: 0.3rem 0.8rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { width: 100%; justify-content: center; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .stat-card { padding: 1.2rem; }
+      .stat-number { font-size: 1.5rem; }
+      .stat-label { font-size: 0.75rem; }
+      .stat-icon { width: 32px; height: 32px; margin-bottom: 0.6rem; }
+      .stat-icon svg { width: 16px; height: 16px; }
+
+      /* Quick actions mobile */
+      .quick-actions { margin-top: -1.5rem; }
+      .quick-actions-inner { padding: 0 1.25rem; }
       .quick-grid { grid-template-columns: repeat(2, 1fr); }
-      .events-grid { grid-template-columns: 1fr; }
+      .quick-item { padding: 1.25rem 1rem; }
+      .quick-icon { width: 44px; height: 44px; margin-bottom: 0.75rem; }
+      .quick-icon svg { width: 20px; height: 20px; }
+      .quick-item h3 { font-size: 0.9rem; }
+      .quick-item p { font-size: 0.75rem; }
+
+      /* Events mobile */
+      .events-section { padding-top: 3.5rem !important; }
+      .events-grid { grid-template-columns: 1fr; gap: 1rem; }
       .events-grid .event-card:last-child { display: block; }
-      .job-card { grid-template-columns: 1fr; gap: 0.8rem; }
-      .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .chapters-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .event-body { padding: 1.25rem; }
+
+      /* Jobs mobile */
+      .job-card { grid-template-columns: 1fr; gap: 0.6rem; padding: 1rem 1.25rem; }
+      .job-tags { order: 3; }
+      .job-posted { order: 2; font-size: 0.75rem; }
+      .job-title { font-size: 0.95rem; }
+
+      /* Spotlight mobile */
+      .spotlight-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .spotlight-photo { max-width: 100%; aspect-ratio: 3/2; border-radius: 14px; }
+      .spotlight-content .section-title { font-size: 1.6rem; }
+      .spotlight-quote { font-size: 1.05rem; padding-left: 1rem; }
+      .spotlight-bio { font-size: 0.88rem; }
+
+      /* Chapters mobile */
+      .chapters-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .chapter-card { padding: 1.25rem 1rem; }
+      .chapter-icon { width: 40px; height: 40px; margin-bottom: 0.75rem; }
+      .chapter-icon svg { width: 18px; height: 18px; }
+
+      /* CTA mobile */
+      .cta-section { padding: 3.5rem 1.25rem; }
+      .cta-section h2 { font-size: 1.8rem; }
+      .cta-section p { font-size: 1rem; }
+      .cta-buttons { flex-direction: column; }
+      .cta-buttons .btn { width: 100%; justify-content: center; }
+
+      /* Footer mobile */
+      footer { padding: 3rem 1.25rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1.25rem; text-align: center; }
+
+      /* Buttons - bigger touch targets */
+      .btn { padding: 0.95rem 2rem; font-size: 1rem; }
+      .view-all { font-size: 0.88rem; padding: 0.5rem 0; }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 1.7rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .stat-card { padding: 1rem; }
+      .stat-number { font-size: 1.3rem; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .chapters-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -672,9 +768,18 @@
         <a href="#">Give Back</a>
         <a href="#" class="nav-cta btn">Sign In</a>
       </nav>
-      <button class="mobile-menu" aria-label="Menu">
+      <button class="mobile-menu" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
+    </div>
+    <div class="mobile-nav">
+      <a href="#">Directory</a>
+      <a href="#">Events</a>
+      <a href="#">Jobs</a>
+      <a href="#">Chapters</a>
+      <a href="#">News</a>
+      <a href="#">Give Back</a>
+      <a href="#" class="nav-cta btn">Sign In</a>
     </div>
   </header>
 
