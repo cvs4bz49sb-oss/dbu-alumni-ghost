@@ -1,0 +1,68 @@
+{{!< default}}
+
+<section class="tag-page">
+  <header class="tag-header">
+    <div class="tag-header-inner">
+      {{#tag}}
+        <h1 class="tag-title">{{name}}</h1>
+        {{#if description}}
+          <p class="tag-description">{{description}}</p>
+        {{/if}}
+        <div class="tag-count">{{count.posts}} {{plural count.posts empty="posts" singular="post" plural="posts"}}</div>
+      {{/tag}}
+    </div>
+  </header>
+
+  <div class="section-inner">
+    {{!-- Switch layout based on tag slug --}}
+    {{#match tag.slug "jobs"}}
+      <div class="jobs-list">
+        {{#foreach posts}}
+          {{> job-card}}
+        {{/foreach}}
+      </div>
+    {{else match tag.slug "events"}}
+      <div class="events-grid">
+        {{#foreach posts}}
+          {{> event-card}}
+        {{/foreach}}
+      </div>
+    {{else match tag.slug "alumni-directory"}}
+      <div class="directory-grid">
+        {{#foreach posts}}
+          <a href="{{url}}" class="directory-card">
+            {{#if feature_image}}
+              <img src="{{img_url feature_image size="s"}}" alt="{{title}}" class="directory-photo" loading="lazy">
+            {{else}}
+              <div class="directory-photo-placeholder">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+              </div>
+            {{/if}}
+            <h3>{{title}}</h3>
+            {{#if custom_excerpt}}<p>{{custom_excerpt}}</p>{{/if}}
+          </a>
+        {{/foreach}}
+      </div>
+    {{else match tag.slug "chapters"}}
+      <div class="chapters-grid">
+        {{#foreach posts}}
+          <a href="{{url}}" class="chapter-card">
+            <div class="chapter-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>{{title}}</h3>
+            {{#if custom_excerpt}}<div class="chapter-members">{{custom_excerpt}}</div>{{/if}}
+          </a>
+        {{/foreach}}
+      </div>
+    {{else}}
+      <div class="news-grid">
+        {{#foreach posts}}
+          {{> post-card}}
+        {{/foreach}}
+      </div>
+    {{/match}}
+
+    {{pagination}}
+  </div>
+</section>

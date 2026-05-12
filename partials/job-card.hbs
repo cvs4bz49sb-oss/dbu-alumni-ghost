@@ -1,0 +1,21 @@
+<div class="job-card">
+  <a href="{{url}}" class="job-card-link">
+    <div class="job-info">
+      <div class="job-title">{{title}}</div>
+      <div class="job-company">
+        {{#if custom_excerpt}}{{custom_excerpt}}{{/if}}
+        {{#if primary_author}} &middot; Posted by {{primary_author.name}}{{/if}}
+      </div>
+    </div>
+    <div class="job-tags">
+      {{#foreach tags}}
+        {{#unless @first}}
+          <span class="tag tag-{{slug}}">{{name}}</span>
+        {{/unless}}
+      {{/foreach}}
+    </div>
+    <div class="job-posted">
+      <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="relative"}}</time>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,44 @@
+<div class="top-bar">
+  <span>Dallas Baptist University Alumni Network</span>
+  <div class="top-bar-links">
+    <a href="https://www.dbu.edu" target="_blank" rel="noopener">DBU.edu</a>
+    <a href="https://www.dbu.edu/give" target="_blank" rel="noopener">Give to DBU</a>
+    {{#if @member}}
+      <a href="#/portal/account">My Account</a>
+    {{/if}}
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{@site.url}}" class="logo">
+      <div>
+        <div class="logo-text">DBU</div>
+        <div class="logo-sub">Alumni Network</div>
+      </div>
+    </a>
+    <nav>
+      {{#foreach navigation}}
+        <a href="{{url}}">{{label}}</a>
+      {{/foreach}}
+      {{#if @member}}
+        <a href="#/portal/account" class="nav-cta btn">{{@member.name}}</a>
+      {{else}}
+        <a href="#/portal/signup" class="nav-cta btn">Sign In</a>
+      {{/if}}
+    </nav>
+    <button class="mobile-menu" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    {{#foreach navigation}}
+      <a href="{{url}}">{{label}}</a>
+    {{/foreach}}
+    {{#if @member}}
+      <a href="#/portal/account">My Account</a>
+    {{else}}
+      <a href="#/portal/signup" class="nav-cta btn">Sign In</a>
+    {{/if}}
+  </div>
+</header>

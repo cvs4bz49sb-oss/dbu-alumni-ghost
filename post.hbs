@@ -1,0 +1,67 @@
+{{!< default}}
+
+<article class="post-full {{post_class}}">
+  {{#post}}
+    <header class="post-header">
+      <div class="post-header-inner">
+        {{#if primary_tag}}
+          <a href="{{primary_tag.url}}" class="post-tag">{{primary_tag.name}}</a>
+        {{/if}}
+        <h1 class="post-title">{{title}}</h1>
+        {{#if custom_excerpt}}
+          <p class="post-subtitle">{{custom_excerpt}}</p>
+        {{/if}}
+        <div class="post-meta-bar">
+          {{#if primary_author}}
+            <div class="post-author">
+              {{#if primary_author.profile_image}}
+                <img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" class="author-avatar">
+              {{/if}}
+              <span>{{primary_author.name}}</span>
+            </div>
+          {{/if}}
+          <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+          <span class="reading-time">{{reading_time}}</span>
+        </div>
+      </div>
+    </header>
+
+    {{#if feature_image}}
+      <figure class="post-feature-image">
+        <img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy">
+        {{#if feature_image_caption}}
+          <figcaption>{{{feature_image_caption}}}</figcaption>
+        {{/if}}
+      </figure>
+    {{/if}}
+
+    <div class="post-content">
+      {{content}}
+    </div>
+
+    {{!-- Tags --}}
+    {{#if tags}}
+      <div class="post-tags-list">
+        {{#foreach tags}}
+          <a href="{{url}}" class="post-tag-pill">{{name}}</a>
+        {{/foreach}}
+      </div>
+    {{/if}}
+  {{/post}}
+</article>
+
+{{!-- Related posts --}}
+{{#get "posts" filter="tags:{{post.primary_tag.slug}}+id:-{{post.id}}" limit="3"}}
+  {{#if posts}}
+    <section class="related-posts">
+      <div class="section-inner">
+        <h2 class="section-title">Related Posts</h2>
+        <div class="news-grid">
+          {{#foreach posts}}
+            {{> post-card}}
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

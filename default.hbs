@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{meta_title}}</title>
+  {{ghost_head}}
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset "css/style.css"}}">
+</head>
+<body class="{{body_class}}">
+
+  {{> header}}
+
+  <main>
+    {{{body}}}
+  </main>
+
+  {{> footer}}
+
+  {{ghost_foot}}
+  <script src="{{asset "js/main.js"}}"></script>
+</body>
+</html>

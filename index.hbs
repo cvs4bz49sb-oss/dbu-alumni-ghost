@@ -1,0 +1,229 @@
+{{!< default}}
+
+{{!-- Hero --}}
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Est. 1898 &middot; Dallas, Texas
+      </div>
+      <h1>Once a Patriot,<br><em>Always a Patriot</em></h1>
+      <p>Stay connected to your DBU family. Find fellow alumni, explore career opportunities, attend events, and continue the mission of developing servant leaders.</p>
+      <div class="hero-buttons">
+        {{#if @member}}
+          <a href="/tag/alumni-directory/" class="btn btn-primary">Explore Directory</a>
+          <a href="/tag/jobs/" class="btn btn-outline">Job Board</a>
+        {{else}}
+          <a href="#/portal/signup" class="btn btn-primary">Join the Network</a>
+          <a href="/tag/alumni-directory/" class="btn btn-outline">Explore Directory</a>
+        {{/if}}
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="stat-number">45,000+</div>
+        <div class="stat-label">Alumni Worldwide</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="stat-number">120+</div>
+        <div class="stat-label">Countries Represented</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div class="stat-number">850+</div>
+        <div class="stat-label">Job Listings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Upcoming Events</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- Quick Actions --}}
+<div class="quick-actions">
+  <div class="quick-actions-inner">
+    <div class="quick-grid">
+      <a href="/tag/alumni-directory/" class="quick-item">
+        <div class="quick-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3>Find Alumni</h3>
+        <p>Search by name, class year, major, or location</p>
+      </a>
+      <a href="/tag/jobs/" class="quick-item">
+        <div class="quick-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <h3>Job Board</h3>
+        <p>Browse or post opportunities for Patriots</p>
+      </a>
+      <a href="/tag/events/" class="quick-item">
+        <div class="quick-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <h3>Events</h3>
+        <p>Reunions, networking, and local gatherings</p>
+      </a>
+      <a href="https://www.dbu.edu/give" target="_blank" rel="noopener" class="quick-item">
+        <div class="quick-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Give Back</h3>
+        <p>Support the next generation of servant leaders</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+{{!-- Upcoming Events (tag: events) --}}
+{{#get "posts" filter="tag:events" limit="3" order="published_at desc"}}
+  {{#if posts}}
+    <section class="events-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-label">What's Happening</div>
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-desc">From Homecoming to local meetups, there's always a reason to reconnect with fellow Patriots.</p>
+          </div>
+          <a href="/tag/events/" class="view-all">View all events <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="events-grid">
+          {{#foreach posts}}
+            {{> event-card}}
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+{{!-- Latest Jobs (tag: jobs) --}}
+{{#get "posts" filter="tag:jobs" limit="5" order="published_at desc"}}
+  {{#if posts}}
+    <section class="jobs-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Career Opportunities</div>
+            <h2 class="section-title">Latest Job Postings</h2>
+            <p class="section-desc">Opportunities posted by and for DBU alumni. Hire a Patriot or find your next role.</p>
+          </div>
+          <a href="/tag/jobs/" class="view-all">View all jobs <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="jobs-list">
+          {{#foreach posts}}
+            {{> job-card}}
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+{{!-- Alumni Spotlight (tag: spotlight, featured) --}}
+{{#get "posts" filter="tag:spotlight+featured:true" limit="1"}}
+  {{#if posts}}
+    {{#foreach posts}}
+      <section class="spotlight-section">
+        <div class="section-inner">
+          <div class="spotlight-grid">
+            <div class="spotlight-photo">
+              {{#if feature_image}}
+                <img src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy">
+              {{else}}
+                <div class="spotlight-photo-placeholder">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                </div>
+              {{/if}}
+            </div>
+            <div class="spotlight-content">
+              <div class="section-label">Alumni Spotlight</div>
+              <h2 class="section-title">{{title}}</h2>
+              {{#if custom_excerpt}}
+                <div class="spotlight-class">{{custom_excerpt}}</div>
+              {{/if}}
+              <div class="spotlight-bio">{{excerpt words="60"}}</div>
+              <a href="{{url}}" class="btn btn-gold">Read Full Story</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    {{/foreach}}
+  {{/if}}
+{{/get}}
+
+{{!-- Chapters (tag: chapters) --}}
+{{#get "posts" filter="tag:chapters" limit="7" order="title asc"}}
+  {{#if posts}}
+    <section class="chapters-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Stay Connected Locally</div>
+            <h2 class="section-title">Alumni Chapters</h2>
+            <p class="section-desc">Find your local chapter or start one. Meet fellow Patriots in your city for fellowship, networking, and service.</p>
+          </div>
+          <a href="/tag/chapters/" class="view-all">View all chapters <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="chapters-grid">
+          {{#foreach posts}}
+            <a href="{{url}}" class="chapter-card">
+              <div class="chapter-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h3>{{title}}</h3>
+              {{#if custom_excerpt}}
+                <div class="chapter-members">{{custom_excerpt}}</div>
+              {{/if}}
+            </a>
+          {{/foreach}}
+          <a href="/start-a-chapter/" class="chapter-card">
+            <div class="chapter-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+            <h3>Start a Chapter</h3>
+            <div class="chapter-members">Your city here</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+{{!-- Recent News / Class Notes --}}
+{{#get "posts" filter="tag:-events+tag:-jobs+tag:-spotlight+tag:-chapters+tag:-alumni-directory" limit="6" order="published_at desc"}}
+  {{#if posts}}
+    <section class="news-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-label">From the Community</div>
+            <h2 class="section-title">Latest News & Class Notes</h2>
+            <p class="section-desc">Stories, updates, and milestones from the Patriot family.</p>
+          </div>
+          <a href="/page/2/" class="view-all">View all posts <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="news-grid">
+          {{#foreach posts}}
+            {{> post-card}}
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
